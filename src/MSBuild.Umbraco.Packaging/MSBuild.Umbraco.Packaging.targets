@@ -29,6 +29,11 @@
                       ProjectUrl="$(PackageProjectUrl)"
                       IconUrl="$(PackageIconUrl)"
                       LicenseUrl="$(PackageLicenseUrl)" />
+
+    <!-- Create zip -->
+    <ZipDirectory SourceDirectory="$(TempFolder)"
+                  DestinationFile="$(DestFolder)\$(Product).$(Version).zip"
+                  Overwrite="true" />
   </Target>
 
   <Target Name="UmbracoClean" AfterTargets="Clean">
