@@ -1,0 +1,5 @@
+﻿<Project>
+  <PropertyGroup>
+    <TempFolder>.\obj\package\</TempFolder>
+  </PropertyGroup>
+</Project>

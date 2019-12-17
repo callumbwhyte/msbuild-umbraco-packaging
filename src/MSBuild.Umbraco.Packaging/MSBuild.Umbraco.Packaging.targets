@@ -1,0 +1,20 @@
+﻿<Project>
+
+  <!-- Import tasks -->
+  <UsingTask AssemblyFile="$(TargetDir)\MSBuild.Umbraco.Packaging.dll" TaskName="MSBuild.Umbraco.Packaging.GenerateManifest" />
+
+  <Target Name="UmbracoPackage" AfterTargets="Pack">
+    <!-- Create manifest -->
+    <GenerateManifest TargetDirectory="$(TempFolder)"
+                      Name="$(Product)"
+                      Description="$(Description)"
+                      Version="$(Version)"
+                      UmbracoVersion="$(UmbracoVersion)"
+                      Author="$(Authors)"
+                      AuthorUrl="$(AuthorUrl)"
+                      ProjectUrl="$(PackageProjectUrl)"
+                      IconUrl="$(PackageIconUrl)"
+                      LicenseUrl="$(PackageLicenseUrl)" />
+  </Target>
+
+</Project>
