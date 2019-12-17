@@ -3,7 +3,7 @@
   <!-- Import tasks -->
   <UsingTask AssemblyFile="$(TargetDir)\MSBuild.Umbraco.Packaging.dll" TaskName="MSBuild.Umbraco.Packaging.GenerateManifest" />
 
-  <Target Name="UmbracoPackage" AfterTargets="Pack">
+  <Target Name="UmbracoPackage" AfterTargets="Pack" DependsOnTargets="UmbracoClean">
     <!-- Create manifest -->
     <GenerateManifest TargetDirectory="$(TempFolder)"
                       Name="$(Product)"
@@ -15,6 +15,11 @@
                       ProjectUrl="$(PackageProjectUrl)"
                       IconUrl="$(PackageIconUrl)"
                       LicenseUrl="$(PackageLicenseUrl)" />
+  </Target>
+
+  <Target Name="UmbracoClean" AfterTargets="Clean">
+    <!-- Remove temp folder -->
+    <RemoveDir Directories="$(TempFolder)" />
   </Target>
 
 </Project>
