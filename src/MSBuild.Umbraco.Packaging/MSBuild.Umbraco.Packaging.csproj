@@ -13,4 +13,9 @@
     <PackageTags>MSBuild Umbraco</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Build.Framework" Version="15.9.20" />
+    <PackageReference Include="Microsoft.Build.Utilities.Core" Version="15.9.20" />
+    <PackageReference Include="UmbracoCms.Core" Version="8.0.0" />
+  </ItemGroup>
 </Project>
