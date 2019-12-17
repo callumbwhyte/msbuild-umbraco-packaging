@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <Version Condition="'$(BUILD_BUILDNUMBER)' == ''">1.0.0.0</Version>
+    <Version Condition="'$(BUILD_BUILDNUMBER)' != ''">$(BUILD_BUILDNUMBER)</Version>
+    <Description>MSBuild tasks and targets for building Umbraco package zip files with .NET SDK project formats</Description>
+    <Authors>Callum Whyte</Authors>
+    <Copyright>Copyright © 2019 Callum Whyte, and other contributors</Copyright>
+    <PackageLicenseUrl>https://github.com/callumbwhyte/msbuild-umbraco-packaging/blob/master/LICENSE.md</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/callumbwhyte/msbuild-umbraco-packaging</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/callumbwhyte/msbuild-umbraco-packaging</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageTags>MSBuild Umbraco</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+</Project>
