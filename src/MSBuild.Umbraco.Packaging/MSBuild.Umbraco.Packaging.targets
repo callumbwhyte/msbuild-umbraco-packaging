@@ -3,7 +3,21 @@
   <!-- Import tasks -->
   <UsingTask AssemblyFile="$(TargetDir)\MSBuild.Umbraco.Packaging.dll" TaskName="MSBuild.Umbraco.Packaging.GenerateManifest" />
 
-  <Target Name="UmbracoPackage" AfterTargets="Pack" DependsOnTargets="UmbracoClean">
+  <Target Name="UmbracoGatherFiles">
+    <!-- Get project assemblies -->
+    <MSBuild Projects="@(ProjectReference)" Targets="GetTargetPath">
+      <Output TaskParameter="TargetOutputs" ItemName="ProjectAssemblies" />
+    </MSBuild>
+
+    <!-- Copy files -->
+    <Copy SourceFiles="@(Content)" DestinationFiles="$(TempFolder)%(RelativeDir)%(Filename)%(Extension)" />
+
+    <!-- Copy assemblies -->
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(TempFolder)\bin\" />
+    <Copy SourceFiles="$(ProjectAssemblies)" DestinationFolder="$(TempFolder)\bin\" />
+  </Target>
+
+  <Target Name="UmbracoPackage" AfterTargets="Pack" DependsOnTargets="UmbracoClean;UmbracoGatherFiles">
     <!-- Create manifest -->
     <GenerateManifest TargetDirectory="$(TempFolder)"
                       Name="$(Product)"
