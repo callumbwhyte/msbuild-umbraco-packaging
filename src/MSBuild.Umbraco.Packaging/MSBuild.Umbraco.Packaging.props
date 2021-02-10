@@ -1,6 +1,6 @@
 ﻿<Project>
   <PropertyGroup>
-    <DestFolder>.\bin\</DestFolder>
-    <TempFolder>.\obj\package\</TempFolder>
+    <DestFolder>.\bin\$(Configuration)\</DestFolder>
+    <TempFolder>.\obj\$(Configuration)\package\</TempFolder>
   </PropertyGroup>
 </Project>

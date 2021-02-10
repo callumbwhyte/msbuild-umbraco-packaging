@@ -1,25 +1,37 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>net472</TargetFramework>
-    <Version Condition="'$(BUILD_BUILDNUMBER)' == ''">1.0.0.0</Version>
-    <Version Condition="'$(BUILD_BUILDNUMBER)' != ''">$(BUILD_BUILDNUMBER)</Version>
-    <Description>MSBuild tasks and targets for building Umbraco package zip files with .NET SDK project formats</Description>
-    <Authors>Callum Whyte</Authors>
-    <Copyright>Copyright © 2019 Callum Whyte, and other contributors</Copyright>
-    <PackageLicenseUrl>https://github.com/callumbwhyte/msbuild-umbraco-packaging/blob/master/LICENSE.md</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/callumbwhyte/msbuild-umbraco-packaging</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/callumbwhyte/msbuild-umbraco-packaging</RepositoryUrl>
-    <RepositoryType>Git</RepositoryType>
-    <PackageTags>MSBuild Umbraco</PackageTags>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-  </PropertyGroup>
-  <ItemGroup>
-    <Content Include="MSBuild.Umbraco.Packaging.props" PackagePath="build" />
-    <Content Include="MSBuild.Umbraco.Packaging.targets" PackagePath="build" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Build.Framework" Version="15.9.20" />
-    <PackageReference Include="Microsoft.Build.Utilities.Core" Version="15.9.20" />
-    <PackageReference Include="UmbracoCms.Core" Version="8.0.0" />
-  </ItemGroup>
+	<PropertyGroup>
+		<TargetFramework>net472</TargetFramework>
+		<Version Condition="'$(BUILD_BUILDNUMBER)' == ''">1.0.0.0</Version>
+		<Version Condition="'$(BUILD_BUILDNUMBER)' != ''">$(BUILD_BUILDNUMBER)</Version>
+		<Description>MSBuild tasks and targets for building Umbraco package zip files with .NET SDK project formats</Description>
+		<Authors>Callum Whyte</Authors>
+		<Copyright>Copyright © 2019 Callum Whyte, and other contributors</Copyright>
+		<PackageLicenseUrl></PackageLicenseUrl>
+		<PackageProjectUrl>https://github.com/callumbwhyte/msbuild-umbraco-packaging</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/callumbwhyte/msbuild-umbraco-packaging</RepositoryUrl>
+		<RepositoryType>Git</RepositoryType>
+		<PackageTags>MSBuild Umbraco</PackageTags>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+	</PropertyGroup>
+	<PropertyGroup>
+		<!-- Include symbol files (*.pdb) in the built .nupkg -->
+		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+		<AssemblyVersion>1.0.1.0</AssemblyVersion>
+		<FileVersion>1.0.1.0</FileVersion>
+		<Version>1.0.1.0</Version>
+	</PropertyGroup>
+	<ItemGroup>
+		<Content Include="MSBuild.Umbraco.Packaging.props" PackagePath="build">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="MSBuild.Umbraco.Packaging.targets" PackagePath="build">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Build.Framework" Version="15.9.20" />
+		<PackageReference Include="Microsoft.Build.Utilities.Core" Version="15.9.20" />
+		<PackageReference Include="UmbracoCms.Core" Version="8.0.0" />
+	</ItemGroup>
 </Project>

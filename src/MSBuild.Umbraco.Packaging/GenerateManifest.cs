@@ -35,7 +35,9 @@ namespace MSBuild.Umbraco.Packaging
 
         public override bool Execute()
         {
+#if DEBUG
             Debugger.Launch();
+#endif
 
             Log.LogMessage(MessageImportance.High, "Creating Umbraco package");
 
